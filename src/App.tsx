@@ -30,7 +30,7 @@ const App = () => {
 
   useEffect(() => {
     getImages();
-  }, []);
+  }, [getImages]);
 
   return (
     <Layout className='layout'>

@@ -1,6 +1,8 @@
 import { Layout, Typography, Row, Col } from 'antd';
 import { SpaceCard } from './components';
 import { Photo } from './types/Photo';
+import Lottie from 'lottie-react';
+import loader from './assets/loading-shapes.json';
 
 import axios from 'axios';
 import { useCallback, useEffect, useState } from 'react';
@@ -30,11 +32,6 @@ const App = () => {
     getImages();
   }, []);
 
-  if (!images) {
-    return <div>loading</div>;
-  }
-  console.log(images);
-
   return (
     <Layout className='layout'>
       <Header style={{ minHeight: '10vh' }}>
@@ -42,18 +39,27 @@ const App = () => {
           Spacestagram - Brought to you by NASA Image API
         </Text>
       </Header>
-      <Content style={{ padding: '50px 100px', minHeight: '80vh' }}>
-        <Row>
-          {images?.map((image) => (
-            <Col span={8}>
-              <SpaceCard
-                imageUrl={image.url}
-                title={`${image.title} - ${image.date}`}
-                description={image.explanation}
-              />
-            </Col>
-          ))}
-        </Row>
+      <Content
+        style={{
+          padding: '50px 100px',
+          minHeight: '80vh',
+        }}
+      >
+        {images ? (
+          <Row>
+            {images?.map((image) => (
+              <Col span={8}>
+                <SpaceCard
+                  imageUrl={image.url}
+                  title={`${image.title} - ${image.date}`}
+                  description={image.explanation}
+                />
+              </Col>
+            ))}
+          </Row>
+        ) : (
+          <Lottie animationData={loader} style={{ height: '60vh' }} />
+        )}
       </Content>
       <Footer style={{ textAlign: 'center', minHeight: '10vh' }}>
         ©2022 Daniel Shwan

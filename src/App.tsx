@@ -1,8 +1,8 @@
 import { Layout, Typography, Row, Col } from 'antd';
-import { SpaceCard } from '@src/components';
-import { Photo } from '@src/types/Photo';
+import { SpaceCard } from './components';
+import { Photo } from './types/Photo';
 import Lottie from 'lottie-react';
-import loader from '@src/assets/loading-shapes.json';
+import loader from './assets/loading-shapes.json';
 
 import axios from 'axios';
 import { useCallback, useEffect, useState } from 'react';

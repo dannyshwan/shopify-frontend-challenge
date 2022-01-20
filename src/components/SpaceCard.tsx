@@ -1,7 +1,7 @@
 import { Card, Button, Typography } from 'antd';
 import { useState } from 'react';
 import { LottieOptions, useLottie } from 'lottie-react';
-import heart from '../assets/colorful-heart.json';
+import heart from '@src/assets/colorful-heart.json';
 
 interface CardProps {
   imageUrl: string;

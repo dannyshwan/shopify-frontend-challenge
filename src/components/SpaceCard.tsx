@@ -1,17 +1,28 @@
-import { Card, Button } from 'antd';
+import { Card, Button, Typography } from 'antd';
 import { useState } from 'react';
 import { LottieOptions, useLottie } from 'lottie-react';
 import heart from '../assets/colorful-heart.json';
 
 interface CardProps {
-  imageUrl?: string;
-  title?: string;
-  description?: string;
+  imageUrl: string;
+  title: string;
+  description: string;
+  date: string;
+  author: string;
 }
 
-export const SpaceCard = ({ imageUrl, title, description }: CardProps) => {
+export const SpaceCard = ({
+  imageUrl,
+  title,
+  description,
+  date,
+  author,
+}: CardProps) => {
   const { Meta } = Card;
+  const { Text } = Typography;
   const [liked, setLiked] = useState<boolean>(false);
+
+  // Lottie animation options and init
   const options: LottieOptions = {
     animationData: heart,
     autoplay: false,
@@ -19,6 +30,7 @@ export const SpaceCard = ({ imageUrl, title, description }: CardProps) => {
 
   const { View, playSegments } = useLottie(options, { height: '60px' });
 
+  // Animate the heart if user likes/unlikes photo
   const likeButtonAction = () => {
     setLiked(!liked);
     if (!liked) {
@@ -39,6 +51,16 @@ export const SpaceCard = ({ imageUrl, title, description }: CardProps) => {
         description={description}
         style={{ paddingBottom: '5%' }}
       />
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          marginBottom: 5,
+        }}
+      >
+        <Text>{author}</Text>
+        <Text>{date}</Text>
+      </div>
       <Button
         onClick={likeButtonAction}
         style={{

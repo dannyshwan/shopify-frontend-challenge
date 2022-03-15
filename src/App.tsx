@@ -49,7 +49,7 @@ const App = () => {
   useEffect(() => {
     setImages(undefined);
     getImages(startDateState, endDateState);
-  }, [startDateState, endDateState]);
+  }, [getImages, startDateState, endDateState]);
 
   // Action for when we change pages
   const paginationChange = (page: number) => {

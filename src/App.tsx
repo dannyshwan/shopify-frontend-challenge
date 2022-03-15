@@ -81,7 +81,6 @@ const App = () => {
           padding: '50px 100px',
           minHeight: '80vh',
           display: 'flex',
-          justifyContent: 'center',
           flexDirection: 'column',
           alignItems: 'center',
         }}

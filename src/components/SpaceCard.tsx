@@ -1,4 +1,4 @@
-import { Card, Button, Typography, notification } from 'antd';
+import { Card, Button, Typography, notification, Space } from 'antd';
 import { useState } from 'react';
 import { LottieOptions, useLottie } from 'lottie-react';
 import heart from '../assets/colorful-heart.json';
@@ -52,7 +52,10 @@ export const SpaceCard = ({
   return (
     <Card
       hoverable
-      style={{ maxWidth: '25vw', margin: '15px' }}
+      style={{
+        maxWidth: '25vw',
+        margin: '15px',
+      }}
       cover={<img alt='example' src={imageUrl} />}
     >
       <Meta
@@ -60,38 +63,34 @@ export const SpaceCard = ({
         description={description}
         style={{ paddingBottom: '5%' }}
       />
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-        }}
-      >
-        <Text>{author}</Text>
-        <Text>{date}</Text>
-      </div>
-      <div
-        style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
-      >
-        <Button
-          onClick={likeButtonAction}
-          style={{
-            display: 'inherit',
-            alignItems: 'center',
-            padding: 0,
-          }}
-          type='text'
-        >
-          {View}
-        </Button>
-        <Button
-          type='text'
-          icon={<LinkOutlined />}
-          size='large'
-          onClick={() => {
-            openNotification();
-          }}
-        />
-      </div>
+      <Space direction='vertical' size='middle'>
+        <Space direction='vertical'>
+          <Text>{author}</Text>
+          <Text>{date}</Text>
+        </Space>
+        <Space align='center'>
+          <Button
+            onClick={likeButtonAction}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              padding: 0,
+              margin: -10,
+            }}
+            type='text'
+          >
+            {View}
+          </Button>
+          <Button
+            type='text'
+            icon={<LinkOutlined />}
+            size='large'
+            onClick={() => {
+              openNotification();
+            }}
+          />
+        </Space>
+      </Space>
     </Card>
   );
 };
